@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p ~/.config/terra/term
+touch ~/.config/terra/term/foot-overrides.ini 2>/dev/null
+
+exec foot --config=/usr/share/terra/term/foot.ini terra-tmux-picker

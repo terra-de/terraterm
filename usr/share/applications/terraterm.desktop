@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Terra Terminal
+Comment=Terminal with terra tmux session management
+Exec=terraterm
+Type=Application
+Categories=System;TerminalEmulator;
