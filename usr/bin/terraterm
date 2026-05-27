@@ -4,4 +4,27 @@ set -euo pipefail
 mkdir -p ~/.config/terra/term
 touch ~/.config/terra/term/foot-overrides.ini 2>/dev/null
 
-exec foot --config=/usr/share/terra/term/foot.ini terra-tmux-picker
+picker=true
+args=()
+
+for arg in "$@"; do
+  case "$arg" in
+    --no-picker)
+      picker=false
+      ;;
+    *)
+      args+=("$arg")
+      ;;
+  esac
+done
+
+if $picker; then
+  exec foot \
+    --config=/usr/share/terra/term/foot.ini \
+    "${args[@]}" \
+    terra-tmux-picker
+else
+  exec foot \
+    --config=/usr/share/terra/term/foot.ini \
+    "${args[@]}"
+fi
